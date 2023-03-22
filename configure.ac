@@ -102,6 +102,11 @@ AC_ARG_ENABLE([lib-only],
                     [Build libngtcp2 and libngtcp2_crypto only.])],
     [lib_only=$enableval], [lib_only=no])
 
+AC_ARG_ENABLE([no-lib],
+    [AS_HELP_STRING([--enable-no-lib],
+                    [Build crypto backends only.])],
+    [no_lib=$enableval], [no_lib=no])
+
 AC_ARG_WITH([jemalloc],
     [AS_HELP_STRING([--with-jemalloc],
                     [Use jemalloc [default=check]])],
@@ -431,6 +436,8 @@ if test "x${lib_only}" = "xno" &&
    test "x${HAVE_CXX20}" != "x1"; then
   AC_MSG_WARN([C++ compiler is not capable of C++20.  Examples will not be built.])
 fi
+
+AM_CONDITIONAL([NO_LIB], [ test "x${no_lib}" = "xyes" ])
 
 enable_examples=no
 if test "x${lib_only}" = "xno" &&

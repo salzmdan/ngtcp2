@@ -39,5 +39,4 @@ lib_LTLIBRARIES = libngtcp2_crypto_wolfssl.la
 libngtcp2_crypto_wolfssl_la_SOURCES = wolfssl.c ../shared.c ../shared.h
 libngtcp2_crypto_wolfssl_la_LDFLAGS = -no-undefined \
 	-version-info $(CRYPTO_WOLFSSL_LT_CURRENT):$(CRYPTO_WOLFSSL_LT_REVISION):$(CRYPTO_WOLFSSL_LT_AGE)
-libngtcp2_crypto_wolfssl_la_LIBADD = $(top_builddir)/lib/libngtcp2.la \
-	@WOLFSSL_LIBS@
+libngtcp2_crypto_wolfssl_la_LIBADD = @WOLFSSL_LIBS@
